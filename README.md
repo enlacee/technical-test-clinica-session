@@ -6,21 +6,26 @@ Este repositorio contiene un aplicativo web desarrollado para la gestión de ses
 
 Para ejecutar el proyecto, sigue los siguientes pasos:
 
-1. Asegúrate de tener Docker instalado en tu sistema.
+1.- Asegúrate de tener Docker instalado en tu sistema.
+2.- Clona este repositorio en tu máquina local.
 
-2. Clona este repositorio en tu máquina local.
-
+```bash
     git clone https://github.com/tu_usuario/repositorio.git
+```
 
-3. Navega a la carpeta del proyecto.
+3.- Navega a la carpeta del proyecto.
 
+```bash
     cd repositorio
+```
 
-4. Ejecuta el siguiente comando para construir y levantar los contenedores de Docker:
+4.- Ejecuta el siguiente comando para construir y levantar los contenedores de Docker:
 
+```bash
     docker-compose up --build
+```
 
-5. Accede al aplicativo web desde tu navegador:
+5.- Accede al aplicativo web desde tu navegador:
 
 * Backend (Flask project): http://localhost:5000
 * Frontend (Vue.js project): http://localhost:4000
