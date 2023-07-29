@@ -6,7 +6,7 @@ Este repositorio contiene un aplicativo web desarrollado para la gestión de ses
 
 Para ejecutar el proyecto, sigue los siguientes pasos:
 
-1.- Asegúrate de tener Docker instalado en tu sistema.
+1.- Asegúrate de tener Docker instalado en tu sistema.  
 2.- Clona este repositorio en tu máquina local.
 
 ```bash
@@ -39,6 +39,6 @@ El repositorio está estructurado de la siguiente manera:
 
 ## Tecnologías Utilizadas
 
-Backend: Flask (Python)
-Frontend: Vue.js (JavaScript)
-Base de datos: [SQLite]
+    Backend: Flask (Python)
+    Frontend: Vue.js (JavaScript)
+    Base de datos: [SQLite]
