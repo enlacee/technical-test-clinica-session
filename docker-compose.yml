@@ -1,0 +1,18 @@
+version: '3'
+services:
+  backend:
+    build: backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5000:5000"
+    command: python3 -m flask run --host=0.0.0.0 -p 5000 --debugger
+  frontend:
+    build: frontend
+    volumes:
+      - ./frontend:/usr/app
+    ports:
+      - 4000:4000
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      - backend

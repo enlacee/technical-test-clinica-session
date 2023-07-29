@@ -1,0 +1,37 @@
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc/
+*.pyo/
+*.pyd/
+
+# Environment related
+venv/
+env/
+*.env
+*.env.*
+
+# IDE specific
+.vscode/
+*.code-workspace
+
+# Compiled files
+*.pyc
+*.pyo
+
+# Log files
+*.log
+
+# Package files
+*.egg-info/
+dist/
+build/
+
+# Database files
+*.db
+
+# Cache and temporary files
+*.cache/
+*.tmp/
