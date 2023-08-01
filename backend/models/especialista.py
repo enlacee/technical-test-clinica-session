@@ -1,5 +1,7 @@
 import sqlite3
-from app import get_db
+from database import get_db
+from dataclasses import dataclass
+import json
 
 class Especialista:
     def __init__(self, id, nombre, especialidad_id):
@@ -20,3 +22,6 @@ class Especialista:
             cursor = conn.execute('SELECT * FROM especialistas WHERE especialidad_id = ?', (especialidad_id,))
             especialistas = cursor.fetchall()
             return [cls(*esp) for esp in especialistas]
+
+    def to_json(self):
+        return json.dumps(self.__dict__)
