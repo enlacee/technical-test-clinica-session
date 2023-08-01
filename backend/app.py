@@ -1,14 +1,22 @@
 from flask import Flask
+from api.api import api_bp
+from backoffice.backoffice import backoffice_bp
+import database
 
-def create_app():
-    app = Flask(__name__)
+app = Flask(__name__)
 
-    @app.route('/')
-    def index():
-        return "<p>Hello, World</p>"
+app.register_blueprint(api_bp, url_prefix='/api')
+app.register_blueprint(backoffice_bp, url_prefix='/')
 
-    return app
+# Código para manejar la base de datos
+@app.teardown_appcontext
+def teardown_db(exception):
+    database.close_db()
+
+# Inicializar la base de datos al arrancar la aplicación
+with app.app_context():
+    print("Creación de base de datos automático FIRST TIME")
+    database.init_db()
 
 if __name__ == '__main__':
-    app = create_app()
     app.run(debug=True)

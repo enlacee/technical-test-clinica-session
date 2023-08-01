@@ -25,6 +25,13 @@ Para ejecutar el proyecto, sigue los siguientes pasos:
     docker-compose up --build
 ```
 
+Opcional
+
+```bash
+    docker-compose stop
+    docker-compose start
+```
+
 5.- Accede al aplicativo web desde tu navegador:
 
 * Backend (Flask project): http://localhost:5000
