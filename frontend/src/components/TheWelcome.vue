@@ -1,86 +1,110 @@
-<script setup>
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
+
+<script>
+import TheHeader from '@/components/TheHeader.vue'
+
+const VITE_APP_TITLE_HEADER = import.meta.env.VITE_APP_TITLE_HEADER;
+const VITE_APP_AUTHOR_NAME = import.meta.env.VITE_APP_AUTHOR_NAME;
+const VITE_APP_AUTHOR_URL = import.meta.env.VITE_APP_AUTHOR_URL;
+
+
+export default {
+    components: {
+        TheHeader
+    },
+    data() {
+        return {
+            titleHeader: VITE_APP_TITLE_HEADER,
+            authorName: VITE_APP_AUTHOR_NAME,
+            authorURL: VITE_APP_AUTHOR_URL,
+        }
+    },
+    mounted() {
+        // this.$store.dispatch('refreshOwnerData');
+    },
+    methods: {
+        // redirectToComponent (event) {
+        //     const nameOfComponent = 'OneDate';
+        //     this.$emit('changeCurrentComponent', nameOfComponent);
+        // }
+    },
+    computed: {
+        // ownerData() {
+        //     return this.$store.getters.ownerData;
+        // },
+        // dataLoaded() {
+        //     return this.$store.state.isLoading;
+        // }
+    }
+}
 </script>
-
 <template>
-  <WelcomeItem>
-    <template #icon>
-      <DocumentationIcon />
-    </template>
-    <template #heading>Documentation</template>
+    <div class="px-3 pt-6">
+        <div v-show="dataLoaded">Cargando...</div>
+        <div v-show="!dataLoaded">
+            <header>
+                <TheHeader :msg="titleHeader" />
+            </header>
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
-  </WelcomeItem>
+            <div class="w-full pt-2 pb-2">
+                <h2 class="font-bold pb-2">1. Especialidades</h2>
+                <div>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Psicologia</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Pediatria</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Re al</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Re al</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Re al</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Re al</button>
+                </div>
+            </div>
+            <div>
+                <h2 class="font-bold pb-2">2. Doctores</h2>
+                <div>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Dr Pepe</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Dr Juan</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Dra Maria</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Dra Julia</button>
+                </div>
+            </div>
 
-  <WelcomeItem>
-    <template #icon>
-      <ToolingIcon />
-    </template>
-    <template #heading>Tooling</template>
+            <div>
+                <h2 class="font-bold pb-2">3. Horario Disponible</h2>
+                <div>
+                    <form>
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" required
+                            class="shadow appearance-none border w-full_ py-2 px-3 text-gray-700 mb-3 leading-tight">
 
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
-    <a href="https://on.cypress.io/component" target="_blank">Cypress Component Testing</a>.
+                        <label for="hora">Hora:</label>
+                        <select id="hora" name="hora" required
+                            class="shadow appearance-none border w-full_ py-2 px-3 text-gray-700 mb-3 leading-tight">
+                        <option value="" disabled selected>Selecciona una hora</option>
+                        <option value="10:00:00">10:00 AM</option>
+                        <option value="11:00:00">11:00 AM</option>
+                        <option value="12:00:00">12:00 PM</option>
+                        <option value="13:00:00">01:00 PM</option>
+                        <option value="14:00:00">02:00 PM</option>
+                        <option value="15:00:00">03:00 PM</option>
+                        <option value="16:00:00">04:00 PM</option>
+                        <option value="17:00:00">05:00 PM</option>
+                        </select>
 
-    <br />
+                        <input type="submit" value="Confirmar cita"
+                            class="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 focus:outline-none focus:shadow-outline w-full">
+                    </form>
+                </div>
+            </div>
 
-    More instructions are available in <code>README.md</code>.
-  </WelcomeItem>
 
-  <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading>Ecosystem</template>
 
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
-  </WelcomeItem>
 
-  <WelcomeItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Community</template>
-
-    Got stuck? Ask your question on
-    <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>, our official
-    Discord server, or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also subscribe to
-    <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a> and follow
-    the official
-    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    twitter account for latest news in the Vue world.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
-
-    As an independent project, Vue relies on community backing for its sustainability. You can help
-    us by
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
-  </WelcomeItem>
+            <!-- <div class="w-full">
+                <p class="mt-3 text-center text-gray-500 text-xs">
+                    &copy;2023. All rights reserved. by <a target="_blank" :href="authorURL">{{ authorName }}</a>
+                </p>
+                <p class="text-center text-gray-500 text-xs">
+                    <a :href="authorURL" target="_blank" class="text-sm text-blue-700">Contacto</a>
+                </p>
+            </div> -->
+        </div>
+    </div>
 </template>
