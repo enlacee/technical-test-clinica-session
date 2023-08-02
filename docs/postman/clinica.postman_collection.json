@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "55eb2fb8-2cb4-4a09-a2df-481afb539492",
+		"name": "clinica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3613430",
+		"_collection_link": "https://breinteam.postman.co/workspace/EscribeSoft---Reservas-de-campo~c2144199-60cb-4e76-951c-a54e4fa0614a/collection/3613430-55eb2fb8-2cb4-4a09-a2df-481afb539492?action=share&creator=3613430&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Sesion disponibilidad true or false",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/sesiones?especialista_id=1&fecha_hora=2023-08-01 10:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sesiones"
+					],
+					"query": [
+						{
+							"key": "especialista_id",
+							"value": "1"
+						},
+						{
+							"key": "fecha_hora",
+							"value": "2023-08-01 10:00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sesion lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/sesiones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sesiones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Session registrar datos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"especialista_id\": 1,\n    \"fecha_hora\": \"2023-08-02 12:00:00\",\n    \"paciente_nombre\": \"pepe rios\",\n    \"paciente_data\": {\n        \"nombre\": \"pepe\",\n        \"apellido\": \"rios\",\n        \"correo\": \"pepe@pprios.com\",\n        \"telefono\": \"2342342344\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sesiones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sesiones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Especialistas por especialidad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/especialistas?especialidad=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"especialistas"
+					],
+					"query": [
+						{
+							"key": "especialidad",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Especialidades lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/especialidades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"especialidades"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

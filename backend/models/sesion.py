@@ -10,7 +10,8 @@ class Sesion:
 
     def save(self):
         with get_db() as conn:
-            conn.execute('INSERT INTO sesiones (especialista_id, paciente_nombre, paciente_data, fecha_hora) VALUES (?, ?, ?, ?)', (self.especialista_id, self.paciente_nombre, self.paciente_data, self.fecha_hora)).commit()
+            conn.execute('INSERT INTO sesiones (especialista_id, paciente_nombre, paciente_data, fecha_hora) VALUES (?, ?, ?, ?)', (self.especialista_id, self.paciente_nombre, self.paciente_data, self.fecha_hora))
+            conn.commit()
 
     @classmethod
     def all(cls):
@@ -47,4 +48,4 @@ class Sesion:
             query = "SELECT COUNT(*) FROM sesiones WHERE especialista_id = ? AND fecha_hora = ?"
             cursor = conn.execute(query, (especialista_id, f"{full_date}"))
             result = cursor.fetchone()
-            return bool(result[0]) if result else False
+            return not bool(result[0]>0) if result else False

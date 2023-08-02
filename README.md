@@ -49,3 +49,19 @@ El repositorio está estructurado de la siguiente manera:
     Backend: Flask (Python)
     Frontend: Vue.js (JavaScript)
     Base de datos: [SQLite]
+
+
+### Recursos
+
+Collección de postman
+
+    `docs/postman/clinica.postman_collection.json`
+
+### preview frontend:
+
+![frontend](docs/thumbnail-frontend.png)
+
+
+### preview frontend:
+
+![frontend](docs/thumbnail-backend.png)
