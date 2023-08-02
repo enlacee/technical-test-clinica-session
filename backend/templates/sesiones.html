@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Sesiones</title>
+</head>
+<body>
+    <h1>Lista de Sesiones, ultimos registros</h1>
+    <ol>
+        {% for sesion in sesiones %}
+        <li> Paciente: {{ sesion['paciente_nombre'] }}, Fecha y Hora: {{ sesion['fecha_hora'] }} - {{ sesion['especialidad_nombre']}} - {{sesion['especialista_nombre']}}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

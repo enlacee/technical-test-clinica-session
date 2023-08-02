@@ -8,21 +8,20 @@ api_bp = Blueprint('api', __name__)
 @api_bp.route('/especialidades', methods=['GET'])
 def especialistas():
     """
-    Example: http://localhost/api/especialidades
+    Example: /especialidades
 
     Ruta para obtener todas las especialidades
 
     Returns:
     - JSON: Una lista de especialistas con la especialidad especificada.
     """
-    especialidades = Especialidad.all()
-    especialidades_json = [especialidad.to_json() for especialidad in especialidades]
-    return jsonify(especialidades_json)
+    result = Especialidad.all()
+    return jsonify(result)
 
 @api_bp.route('/especialistas', methods=['GET'])
 def obtener_especialistas_por_especialidad_id():
     """
-    Example: http://localhost/api/especialistas?especialidad=1
+    Example: /especialistas?especialidad=1
 
     Ruta para obtener especialistas por especialidad.
 
@@ -34,8 +33,7 @@ def obtener_especialistas_por_especialidad_id():
     """
     especialidad_id = int(request.args.get('especialidad', 0))
     data = Especialista.by_especialidad(especialidad_id)
-    json_data = [element.to_json() for element in data]
-    return jsonify(json_data)
+    return jsonify(data)
 
 @api_bp.route('/sesiones', methods=['GET'])
 def obtener_sesiones():
@@ -56,6 +54,34 @@ def obtener_sesiones():
         data = Sesion.check_available_especialista(especialista_id, fecha_hora)
         json_data = data
     else:
-        data = Sesion.all()
-        json_data = [element.to_json() for element in data]
+        json_data = Sesion.all()
     return jsonify(json_data)
+
+@api_bp.route('/sesiones', methods=['POST'])
+def registrar_sesion():
+    """
+    Example: http://localhost/api/sesiones
+
+    Ruta para registrar una nueva sesion
+
+    Returns:
+    - JSON: informacion del registro o error message.
+    """
+    data = request.get_json()
+    id = '' #data.get('id')
+    especialista_id = data.get('especialista_id')
+    paciente_nombre = data.get('paciente_nombre')
+    paciente_data = data.get('paciente_data')
+    fecha_hora = data.get('fecha_hora')
+
+    try:
+        # Verificar que los datos necesarios estén presentes en la solicitud
+        if not id or not especialista_id or not paciente_nombre or not paciente_data or not fecha_hora:
+            return jsonify({"error": "Faltan datos en la solicitud"}), 400
+
+        nueva_sesion = Sesion(id=id, especialista_id=especialista_id, paciente_nombre=paciente_nombre, paciente_data=paciente_data, fecha_hora=fecha_hora)
+        nueva_sesion.save()
+
+        return jsonify({"mensaje": "Sesión registrada exitosamente"}), 201
+    except Exception as e:
+        return jsonify({"error": "Error al registrar la sesión", "detalle": str(e)}), 500

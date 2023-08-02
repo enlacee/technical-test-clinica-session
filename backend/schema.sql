@@ -38,7 +38,7 @@ CREATE TABLE sesiones (
 
 -- Insertar datos de prueba en la tabla sesiones
 INSERT INTO sesiones (especialista_id, paciente_nombre, paciente_data, fecha_hora) VALUES
-    (1, 'Juan Pérez', '{"nombre": "Juan", "apellido": "Pérez", "correo": "juan@example.com", "telefono": "1234567890"}', '2023-08-01 10:00:00'),
-    (2, 'María Gómez', '{"nombre": "María", "apellido": "Gómez", "correo": "maria@example.com", "telefono": "9876543210"}', '2023-08-02 15:00:00'),
-    (3, 'Carlos Ramírez', '{"nombre": "Carlos", "apellido": "Ramírez", "correo": "carlos@example.com", "telefono": "5555555555"}', '2023-08-03 09:00:00');
+    (1, 'Percy Lopez', '{"nombre": "Percy", "apellido": "Lopez", "correo": "percy@example.com", "telefono": "1234567890"}', '2023-08-01 10:00:00'),
+    (2, 'Mario Rojas', '{"nombre": "Mario", "apellido": "Rojas", "correo": "mario@example.com", "telefono": "9876543210"}', '2023-08-02 15:00:00'),
+    (3, 'Carlos Lora', '{"nombre": "Carlos", "apellido": "Lora", "correo": "carlos@example.com", "telefono": "5555555555"}', '2023-08-03 09:00:00');
 

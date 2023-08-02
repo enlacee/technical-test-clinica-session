@@ -1,7 +1,4 @@
-import sqlite3
 from database import get_db
-from dataclasses import dataclass
-import json
 
 class Especialista:
     def __init__(self, id, nombre, especialidad_id):
@@ -13,15 +10,13 @@ class Especialista:
     def all(cls):
         with get_db() as conn:
             cursor = conn.execute('SELECT * FROM especialistas')
-            especialistas = cursor.fetchall()
-            return [cls(*esp) for esp in especialistas]
+            rows = cursor.fetchall()
+            data = [{'id': row[0], 'nombre': row[1], 'especialidad_id': row[2]} for row in rows]
+            return data
 
     @classmethod
     def by_especialidad(cls, especialidad_id):
         with get_db() as conn:
             cursor = conn.execute('SELECT * FROM especialistas WHERE especialidad_id = ?', (especialidad_id,))
-            especialistas = cursor.fetchall()
-            return [cls(*esp) for esp in especialistas]
-
-    def to_json(self):
-        return json.dumps(self.__dict__)
+            rows = cursor.fetchall()
+            return [{'id': row[0], 'nombre': row[1]} for row in rows]

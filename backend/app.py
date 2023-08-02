@@ -5,9 +5,6 @@ import database
 
 app = Flask(__name__)
 
-app.register_blueprint(api_bp, url_prefix='/api')
-app.register_blueprint(backoffice_bp, url_prefix='/')
-
 # Código para manejar la base de datos
 @app.teardown_appcontext
 def teardown_db(exception):
@@ -17,6 +14,9 @@ def teardown_db(exception):
 with app.app_context():
     print("Creación de base de datos automático FIRST TIME")
     database.init_db()
+
+app.register_blueprint(api_bp, url_prefix='/api')
+app.register_blueprint(backoffice_bp, url_prefix='/')
 
 if __name__ == '__main__':
     app.run(debug=True)
