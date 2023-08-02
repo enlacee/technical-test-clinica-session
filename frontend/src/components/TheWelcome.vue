@@ -38,14 +38,14 @@ export default {
 }
 </script>
 <template>
-    <div class="px-3 pt-6">
+    <div class="px-3 pt-3">
         <div v-show="dataLoaded">Cargando...</div>
         <div v-show="!dataLoaded">
             <header>
                 <TheHeader :msg="titleHeader" />
             </header>
 
-            <div class="w-full pt-2 pb-2">
+            <div class="w-full mb-7">
                 <h2 class="font-bold pb-2">1. Especialidades</h2>
                 <div>
                     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Psicologia</button>
@@ -56,7 +56,7 @@ export default {
                     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Re al</button>
                 </div>
             </div>
-            <div>
+            <div class="mb-7">
                 <h2 class="font-bold pb-2">2. Doctores</h2>
                 <div>
                     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-4 py-2 mr-2 mb-2">Dr Pepe</button>
@@ -66,7 +66,7 @@ export default {
                 </div>
             </div>
 
-            <div>
+            <div class="mb-7">
                 <h2 class="font-bold pb-2">3. Horario Disponible</h2>
                 <div>
                     <form>
